@@ -35,9 +35,9 @@ Will configure the shell and save big time to create launchers and aliases.
 
 </pre>
 ### Any script can after install be started by:
- - Clicking his icon in the gnome programming menu
- - Typing his name in terminal
- - Call his name from other shell scripts.
+ - <b>Clicking his icon in the gnome programming menu</b>
+ - <b>Typing his name in terminal</b>
+ - <b>Call his name from other shell scripts</b>
  
 When done, icons can be changed with gnome, scripts can be uninstalled by right click from the menu.
 
@@ -49,7 +49,7 @@ We can then create scripts without caring of paths, they will work on other mach
 <pre>
 I use scripts without extensions, i recommend you to do so, and this is how this program is written.
 Scripts are valids only if they are extensionless.
-Anything whithout extensions won't download at all.
+Anything without extensions won't download at all.
 
 <b>#!</b> Script: are valids only when a shebang <b>#!</b> match the document two first chars
 
@@ -95,7 +95,7 @@ I<b>nstall all scripts from the main defined index:</b>
 
 <b>(Advanced:) pipe install from another remote script (!)
 
-There is no needs of sudo when piping, but for apt scripts depedencies, if required.
+<b>There is <b>no needs of sudo</b> when piping, but for apt scripts depedencies, if required.</b>
 
 This is golden if you got it.. <i>enjoy</i></b>
  
