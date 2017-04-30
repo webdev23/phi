@@ -88,7 +88,7 @@ You can as well <a href="https://github.com/webdev23/phi/archive/master.zip">dow
 
     php <(curl https://webdev23.github.io/phi/phi) 
     
-<b> Check infos from a remote script from url:</b>
+<b> Check infos from a remote script url: </b>
 
     phi list https://webdev23.github.io/gif/gif
 
