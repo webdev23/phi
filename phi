@@ -1,7 +1,7 @@
 #!/usr/bin/php
 
 <?php
-#> lolcat
+#> speedtest-cli
 
 #~ phi: php helper installer
 #~ Install remote shell scripts (sh,bash,php,csh,python,perl..) 
