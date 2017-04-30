@@ -114,7 +114,7 @@ You can as well <a href="https://github.com/webdev23/phi/archive/master.zip">dow
 
     php <(curl https://webdev23.github.io/phi/phi) install 
 
-<b>(Advanced:) pipe install from another remote script (!)
+<b>(Advanced:) pipe install from another remote script (!)</b>
 
 There is <b>no needs of sudo</b> when piping, but for apt scripts depedencies, if required.
 
