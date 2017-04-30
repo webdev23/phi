@@ -46,8 +46,10 @@ Keyboards shortcuts commands will directly works with no paths headaches.
 We can then create scripts without caring of paths, they will work on other machines when deployed with phi.
 
 ### How are parsed scripts:
-<pre>
+
 I use scripts without extensions, i recommend you to do so, and this is how this program is written.
+
+<pre>
 Scripts are valids only if they are extensionless.
 Anything without extensions won't download at all.
 
