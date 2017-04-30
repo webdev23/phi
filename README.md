@@ -1,11 +1,11 @@
 # φ | php helper installer
-Shell script installer, updater, and dependency manager.
+Shell script installer, updater, dependency manager.
 
 Originally made to fast deploy and update shell scripts from a remote index.
 
 This is alpha quality software for aware peoples.
 
-At this stage, it suit perfectly my needs, feel free to participate if you see usefulness.
+Currently, it suit perfectly my needs, but feel free to participate or give a star if you see usefulness.
 
 It is tested in debian base, ubuntu, mint, raspbian.
 
@@ -39,13 +39,13 @@ Will configure the shell and save big time to create launchers and aliases.
  - <b>Typing his name in terminal</b>
  - <b>Call his name from other shell scripts</b>
  
-When done, icons can be changed with gnome, scripts can be uninstalled by right click from the menu.
+When done, icons can be changed as regular, scripts can be uninstalled by right click from the menu.
 
 Keyboards shortcuts commands will directly works with no paths headaches.
 
 We can then create scripts without caring of paths, they will work on other machines when deployed with phi.
 
-### How are parsed scripts
+### How are parsed scripts:
 <pre>
 I use scripts without extensions, i recommend you to do so, and this is how this program is written.
 Scripts are valids only if they are extensionless.
@@ -62,10 +62,33 @@ Anything without extensions won't download at all.
     Will install lolcat with <b>apt</b>, 
     just like: <b><i>sudo apt install lolcat</i></b>
  </pre>
+ 
+The directory path is a hidden folder <b>.phi</b> in home. 
 
-### Examples of uses
+Files in this folder will be erased while updating.
 
-<b>Check infos from a remote script from url:</b>
+Editing is best done from remote.
+
+Then do a <b>phi update</b>
+
+### Installation:
+
+You need php installed on the system: 
+
+<pre><b>sudo apt install php</b></pre>
+
+Online installation from github:
+<pre><b>php <(curl https://webdev23.github.io/phi/phi) install</b></pre>    
+    
+You can as well <a href="https://github.com/webdev23/phi/archive/master.zip">download the archive</a> and run <b>./phi</b>
+
+### Examples of uses:
+
+<b> Launch phi without installing </b>
+
+    php <(curl https://webdev23.github.io/phi/phi) 
+    
+<b> Check infos from a remote script from url:</b>
 
     phi list https://webdev23.github.io/gif/gif
 
@@ -95,7 +118,7 @@ I<b>nstall all scripts from the main defined index:</b>
 
 <b>(Advanced:) pipe install from another remote script (!)
 
-<b>There is <b>no needs of sudo</b> when piping, but for apt scripts depedencies, if required.</b>
+There is <b>no needs of sudo</b> when piping, but for apt scripts depedencies, if required.
 
 This is golden if you got it.. <i>enjoy</i></b>
  
