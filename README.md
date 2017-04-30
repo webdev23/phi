@@ -67,18 +67,16 @@ The directory path is a hidden folder <b>.phi</b> in home.
 
 Files in this folder will be erased while updating.
 
-Editing is best done from remote.
-
-Then do a <b>phi update</b>
+Editing is best done from remote, then to update changes locally: <b>phi update</b>
 
 ### Installation:
 
-You need php installed on the system: 
+Php is needed on the system: <b>sudo apt install php</b>
 
-<pre><b>sudo apt install php</b></pre>
+Installation of phi alone from github source:
+<pre><b>php <(curl https://webdev23.github.io/phi/phi) install https://webdev23.github.io/phi/phi</b></pre> 
 
-Installation from github:
-<pre><b>php <(curl https://webdev23.github.io/phi/phi) install</b></pre>    
+Yes, to say it differently, this command <i>will install phi from himself</i>.
     
 You can as well <a href="https://github.com/webdev23/phi/archive/master.zip">download the archive</a> and run <b>./phi</b>
 
@@ -96,11 +94,11 @@ You can as well <a href="https://github.com/webdev23/phi/archive/master.zip">dow
 
     phi list
     
-I<b>nstall all scripts from the main defined index:</b>
+<b>Install all scripts from the main defined index:</b> (https://ponyhacks.com/open/cli/)
 
     phi install
     
-<b>Parse and install all scripts including those in subfolders (be careful..)</b>
+<b>Parse and install all scripts including those in remote subfolders (caution..)</b>
 
     phi install URL
     
