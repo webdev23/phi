@@ -38,10 +38,16 @@ Will configure the shell and save big time to create launchers and aliases.
  - Clicking his icon in the gnome programming menu
  - Typing his name in terminal
  - Call his name from other shell scripts.
+ 
+When done, icons can be changed with gnome, scripts can be uninstalled by right click from the menu.
+
+Keyboards shortcuts commands will directly works with no paths headaches.
+
+We can then create scripts without caring of paths, they will work on other machines when deployed with phi.
 
 ### How are parsed scripts
 <pre>
-I use scripts without extensions, i recommend you to do so.
+I use scripts without extensions, i recommend you to do so, and this is how this program is written.
 Scripts are valids only if they are extensionless.
 Anything whithout extensions won't download at all.
 
@@ -61,7 +67,7 @@ Anything whithout extensions won't download at all.
 
 <b>Check infos from a remote script from url:</b>
 
-    phi list https://raw.githubusercontent.com/webdev23/gif/master/gif
+    phi list https://webdev23.github.io/gif/gif
 
 <b>List scripts in the defined main remote index:</b>
 
@@ -85,7 +91,7 @@ I<b>nstall all scripts from the main defined index:</b>
     
 <b>(Advanced:) Pipe install phi and all scripts from remote index</b>
 
-    php <(curl https://raw.githubusercontent.com/webdev23/phi/master/phi) install 
+    php <(curl https://webdev23.github.io/phi/phi) install 
 
 <b>(Advanced:) pipe install from another remote script (!)
 
@@ -93,7 +99,7 @@ There is no needs of sudo when piping, but for apt scripts depedencies, if requi
 
 This is golden if you got it.. <i>enjoy</i></b>
  
-    php <(curl https://raw.githubusercontent.com/webdev23/phi/master/phi) install https://raw.githubusercontent.com/webdev23/gif/master/gif
+    php <(curl https://webdev23.github.io/phi/phi) install https://webdev23.github.io/gif/gif
    
 <b>(Advanced:) Check a website to find shell scripts, including those in subfolders.</b>
 
