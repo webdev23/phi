@@ -1,0 +1,216 @@
+#!/usr/bin/php
+
+<?php
+#> lolcat
+
+#~ phi: php helper installer
+#~ Install remote shell scripts (sh,bash,php,csh,python,perl..) 
+#~  as linux applications.
+#~ Will configure the shell and save big time to create launchers and aliases
+#~ Any script can after install be started by:
+#~ - Launcher in the gnome submenu programming
+#~ - typing his name in terminal
+#~ - call his name in any other shell script
+#
+# #! Script: is valid only when a shebang #! match the two first chars
+# #  Comments: lines begining with a # will be displayed as informations
+# #> Dependencies: lines with #> will be silently installed via apt
+
+echo "Usage: phi [list[install|local|update] [url|path]\n";
+echo "---------------------------------------------------\n";
+echo "
+phi: php helper installer
+Easily deploy any shell script as linux application
+Parse remote directories or file to find shell script and install them
+Will configure the shell and save big time to create launchers and aliases
+Any script can after install be started by:
+ - clicking his icon in the gnome programming menu
+ - typing his name in terminal
+ - Call his name in any other shell script
+
+'#!' Script: are valids only when a shebang #! match the document first chars
+'#'  Comments: lines begining with a # will be displayed as informations
+'#>' Dependencies: lines with #> will be silently installed via apt
+\n";
+
+$def = @$argv[2];
+
+if (!isset($argv[2])){
+  $def = "https://ponyhacks.com/open/cli/";
+}
+
+//~ echo "\nCurrent index: ".$def."\n";
+
+if (!isset($argv[1]) && !isset($argv[2])){
+ echo "List already installed scripts?\n";
+ $stdin = fopen('php://stdin', 'r');
+ $response = rtrim(fgets(STDIN));
+ if (!$response) {
+  $lfs = @array_diff(scandir("./.phi"), array('..', '.'));
+  foreach($lfs as $e):
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    $lines   = @file('./.phi/'.$e, FILE_IGNORE_NEW_LINES);
+    $matched = @preg_grep('/^\#/', $lines);
+    if (isset($matched)) {
+      echo " ".$e."\n";
+      echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        foreach ($matched as $line) {
+           echo "   ".$line."\n";
+      }
+    }
+  endforeach;
+  } else {exit;}
+}
+
+if (@$argv[1] === "update") {
+  system("mkdir -p ./.phi/");
+  system("cd ./.phi/ &&
+   wget -r -np -nH -q --show-progress --cut-dirs=5 -R '*.*' --no-parent $def");
+  system("cd ./.phi/ &&
+   find . -type f -name 'index.*' -delete");
+  system("ls ./.phi");
+  usleep(1000000);
+  echo "Updated";
+  exit;
+}
+
+if (@$argv[1] === "list") {
+  system("mkdir -p ./.phi/.list");
+  system("cd ./.phi/.list &&
+   wget -r -np -nH -q --show-progress --cut-dirs=5 -R '*.*' --no-parent $def");
+  system("cd ./.phi/.list &&
+   find . -type f -name 'index.*' -delete");
+  system("ls ./.phi/.list");
+  usleep(1000000);
+  $lfs = array_diff(scandir("./.phi/.list/"), array('..', '.'));
+  foreach($lfs as $e):
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    $lines   = file('./.phi/.list/'.$e, FILE_IGNORE_NEW_LINES);
+    $matched = preg_grep('/^\#/', $lines);
+    if (isset($matched)) {
+      echo " ".$e."\n";
+      echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        foreach ($matched as $line) {
+           echo "  ".$line."\n";
+      }
+    }
+  endforeach;
+  system("rm -r ./.phi/.list");
+  exit;
+}
+
+if (@$argv[1] === "install" || @$argv[1] === "local") {
+  system("mkdir -p ./.phi/");
+  echo "Updating .phi folder\n";
+  usleep(1000000);
+  if (@$argv[1] === "install") {
+  system("cd ./.phi/ &&
+   wget -r -np -nH -q --show-progress --cut-dirs=5 -R --no-parent $def");
+  echo "Updating .phi from remote\n";
+  }
+  if (@$argv[1] === "local") {
+    echo $argv[2];
+   system("cp $argv[2] ./.phi/");
+  }
+  usleep(1000000);
+  system("cd ./.phi/ &&
+   find . -type f -name 'index.*' -delete");
+  echo "Scanning for scripts\n";
+  usleep(1000000);
+  $fls = array_diff(scandir("./.phi/"), array('..', '.'));
+  system("ls ~/.phi");
+// Display comments # as infos  
+ foreach($fls as $e):
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    $check = fgets(fopen("./.phi/$e", 'r'));
+    $check = substr($check, 0, 15);
+    $bang = substr($check, 0, 2);
+    echo $check;
+    echo $bang;
+   if ($bang != "#!") {
+          @system("rm -r ./.phi/$e");
+          echo $e." is not a shell script, deleting\n";
+          usleep(1000000);
+          continue;
+      } 
+     else {
+          $lines   = file('./.phi/'.$e, FILE_IGNORE_NEW_LINES);
+          $matched = preg_grep('/^\#/', $lines);
+    }
+   if (isset($matched)) {
+        echo " ".$e."\n";
+        echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+      foreach ($matched as $line) {
+          echo "  ".$line."\n";
+       }
+        echo "\n";
+     }
+ endforeach;
+// Check and install dependencies via apt
+ $fls = array_diff(scandir("./.phi/"), array('..', '.'));
+ foreach($fls as $e):
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    $lines   = file('./.phi/'.$e, FILE_IGNORE_NEW_LINES);
+    $matched = preg_grep('/^\#> /', $lines);
+    if (isset($matched)) {
+        foreach ($matched as $line) {
+          echo " Found dependencies for ".$e."\n";
+          echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+          echo "Updating install ".$line."\n";
+          $apt = str_replace("#> ","",$line);
+          system("sudo apt-get --yes --force-yes install $apt");
+        }
+      echo "\n";
+    }
+ endforeach;
+ foreach($fls as $e):
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+   if ($e){
+    echo "Checking $e\n";
+    echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    @system("sudo chmod +x ./.phi/$e");
+    usleep(1000000);
+    echo "$e.desktop is in home directory\n";
+    @system("echo \"[Desktop Entry]\nVersion=1.0\nName=$e\n
+            Exec=bash -c './.phi/$e;\$SHELL'\n
+            Icon=utilities-terminal\n
+            Terminal=true\n
+            Type=Application\n
+            Categories=Development;\" >> $e.desktop ");
+    usleep(1000000);
+    @system("chmod +x $e.desktop");
+    usleep(1000000);
+    @system("sudo cp -P $e.desktop /usr/share/applications/");
+    echo "Launcher $e.desktop is in /usr/share/applications/\n";
+    usleep(1000000);
+    $sys = file_get_contents("./.bashrc");
+   if (strpos($sys, "alias ".$e."=") === false) {
+      @system("echo \"alias $e='./.phi/$e'\" >> ~/.bashrc");
+      echo "Alias created in .bashrc\n";
+    }
+   else { 
+      echo "Alias exist in .bashrc, skipping\n";
+      }
+    echo "Launcher $e set in programming menu\n";
+    echo "To start via command line type: $e\n";
+   }
+ endforeach;
+echo "\n Restarting panels\n";
+usleep(1000000);
+@system("killall mate-panel");
+echo "\nThanks YOU!\n";
+echo "~~~~~~~~~~~";
+echo "
+           ______
+          |_BOSS_|
+        .--.  |
+       |o_o | |
+       |:_/ | |
+      //   \ \, 
+     (|     | )
+    /'\_   _/`\
+    \___)=(___/
+";
+// Reset aliases
+system("bash");
+}
