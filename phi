@@ -105,7 +105,7 @@ if (@$argv[1] === "install" || @$argv[1] === "local") {
   usleep(1000000);
   if (@$argv[1] === "install") {
   system("cd ./.phi/ &&
-   wget -r -np -nH -q --show-progress --cut-dirs=5 -R --no-parent $def");
+   wget -r -np -nH -q --show-progress --cut-dirs=5 -R '*.*' --no-parent $def");
   echo "Updating .phi from remote\n";
   }
   if (@$argv[1] === "local") {
