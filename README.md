@@ -77,7 +77,7 @@ You need php installed on the system:
 
 <pre><b>sudo apt install php</b></pre>
 
-Online installation from github:
+Installation from github:
 <pre><b>php <(curl https://webdev23.github.io/phi/phi) install</b></pre>    
     
 You can as well <a href="https://github.com/webdev23/phi/archive/master.zip">download the archive</a> and run <b>./phi</b>
