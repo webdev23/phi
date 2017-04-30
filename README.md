@@ -29,7 +29,7 @@ Will configure the shell and save big time to create launchers and aliases.
             Create shortcuts in the gnome programming submenu
             
 <b>[update]</b>   Update/replace local scripts by all scripts from remote index 
-            or url given as 2nd arument
+            or url given as 2nd argument
             
 <b>[local]</b>    Install local script given as 2nd argument (local path)
 
