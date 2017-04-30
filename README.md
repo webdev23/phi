@@ -1,5 +1,5 @@
 # φ | php helper installer
-Shell script installer, updater, dependency manager, that works both serverside and locally.
+Shell script installer, updater, dependency manager, that works both sides.
 
 Originally made to fast deploy and update shell scripts from a remote index.
 
