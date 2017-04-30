@@ -1,5 +1,5 @@
 # φ | php helper installer
-Shell script installer, updater, dependency manager.
+Shell script installer, updater, dependency manager, that works both serverside and locally.
 
 Originally made to fast deploy and update shell scripts from a remote index.
 
@@ -125,6 +125,10 @@ This is golden if you got it.. <i>enjoy</i></b>
 <b>(Advanced:) Check a website to find shell scripts, including those in subfolders.</b>
 
      phi list URL
+     
+### TODO
+
+Add #@ parsing to update scripts from a fixed url.
      
      
  
