@@ -94,7 +94,7 @@ You can as well <a href="https://github.com/webdev23/phi/archive/master.zip">dow
 
     phi list
     
-<b>Install all scripts from the main defined index:</b> (https://ponyhacks.com/open/cli/)
+<b>Install all scripts from the main defined index:</b> You will find somes helloworld demo (https://ponyhacks.com/open/cli/)
 
     phi install
     
