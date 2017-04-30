@@ -1,7 +1,7 @@
 # φ | php helper installer
 Shell script installer, updater, dependency manager, that works both sides.
 
-Originally made to fast deploy and update shell scripts from a remote index.
+Made to fast deploy and update shell scripts from a remote index.
 
 This is alpha quality software for aware peoples.
 
@@ -9,7 +9,7 @@ Currently, it suit perfectly my needs, but feel free to participate or give a st
 
 It is tested in debian base, ubuntu, mint, raspbian.
 
-Should work in mac os with a little patch (using .bash_profiles instead of .bashrc, please report).
+Should work on mac os with a little patch (using .bash_profiles instead of .bashrc, please report).
 
 <pre>
 <b>Usage: phi [list[install|local|update] [url|path]
