@@ -1,7 +1,7 @@
 #!/usr/bin/php
 
 <?php
-#> speedtest-cli
+#> lolcat
 
 #~ phi: php helper installer
 #~ Install remote shell scripts (sh,bash,php,csh,python,perl..) 
@@ -105,7 +105,7 @@ if (@$argv[1] === "install" || @$argv[1] === "local") {
   usleep(1000000);
   if (@$argv[1] === "install") {
   system("cd ./.phi/ &&
-   wget -r -np -nH -q --show-progress --cut-dirs=5 -R '*.*' --no-parent $def");
+   wget -r -np -nH -q --show-progress --cut-dirs=5 -R --no-parent $def");
   echo "Updating .phi from remote\n";
   }
   if (@$argv[1] === "local") {
@@ -129,7 +129,7 @@ if (@$argv[1] === "install" || @$argv[1] === "local") {
     echo $bang;
    if ($bang != "#!") {
           @system("rm -r ./.phi/$e");
-          echo $e." is not a shell script, deleting\n";
+          echo $e." : not a shell script, deleting\n";
           usleep(1000000);
           continue;
       } 
@@ -170,18 +170,18 @@ if (@$argv[1] === "install" || @$argv[1] === "local") {
     echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
     @system("sudo chmod +x ./.phi/$e");
     usleep(1000000);
-    echo "$e.desktop is in home directory\n";
+    echo "$e.desktop launcher created\n";
     @system("echo \"[Desktop Entry]\nVersion=1.0\nName=$e\n
             Exec=bash -c './.phi/$e;\$SHELL'\n
             Icon=utilities-terminal\n
             Terminal=true\n
             Type=Application\n
-            Categories=Development;\" >> $e.desktop ");
+            Categories=Development;\" >> ./.phi/$e.desktop ");
     usleep(1000000);
-    @system("chmod +x $e.desktop");
+    @system("chmod +x ./.phi/$e.desktop");
     usleep(1000000);
-    @system("sudo cp -P $e.desktop /usr/share/applications/");
-    echo "Launcher $e.desktop is in /usr/share/applications/\n";
+    @system("sudo cp -P ./.phi/$e.desktop /usr/share/applications/");
+    echo "Launcher $e.desktop copied to /usr/share/applications/\n";
     usleep(1000000);
     $sys = file_get_contents("./.bashrc");
    if (strpos($sys, "alias ".$e."=") === false) {
