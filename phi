@@ -34,7 +34,6 @@ Any script can after install be started by:
 \n";
 
 $def = @$argv[2];
-
 if (!isset($argv[2])){
   $def = "https://ponyhacks.com/open/cli/";
 }
