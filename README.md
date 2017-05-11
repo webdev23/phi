@@ -134,6 +134,8 @@ Add <b>#@</b> parsing to update scripts from a fixed url.
 
 Add <b>#^</b> parsing to define an icon from script.
 
+Add <b>#?</b> parsing to define the launcher to run as super user.
+
 Ability to update remote from local.
 
      
