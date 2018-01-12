@@ -1,7 +1,7 @@
 # φ | php helper installer
-Shell script installer, updater, dependency manager, that works both sides.
+Install shell scripts as system apps, install dependencies, and from your own repository.
 
-Made to fast deploy and update shell scripts from a remote index.
+Made to fast deploy and update shell scripts from a remote index (yours!).
 
 This is alpha quality software for aware peoples.
 
